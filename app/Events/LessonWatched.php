@@ -17,7 +17,8 @@ class LessonWatched
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Lesson $lesson
+     * @param User $user
      */
     public function __construct(Lesson $lesson, User $user)
     {

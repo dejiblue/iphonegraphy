@@ -54,6 +54,7 @@ class UserController extends Controller
             $comment->user_id = $userId;
             $comment->body = $request->input('body');
             if ($comment->save()) {
+                event(new CommentWritten($comment, $user));
                 $success = true;
                 return response()->json([
                     'success' => $success,
@@ -79,6 +80,7 @@ class UserController extends Controller
         $lesson = Lesson::find($lessonId);
         if ($user && $lesson) {
             if ($user->lessons()->updateExistingPivot($lesson->id, ['watched' => true])) {
+                event(new LessonWatched($lesson, $user));
                 $success = true;
                 return response()->json(['success' => $success]);
             }
