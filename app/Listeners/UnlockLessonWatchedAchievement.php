@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\LessonWatched;
+use App\Helpers\UserHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -27,5 +28,8 @@ class UnlockLessonWatchedAchievement
     public function handle(LessonWatched $event)
     {
         $user = $event->user;
+
+        $userHelper = new UserHelper();
+        $userHelper->unlockUserLessonWatchedAchievement($user);
     }
 }

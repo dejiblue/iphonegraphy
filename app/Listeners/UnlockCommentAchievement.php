@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CommentWritten;
+use App\Helpers\UserHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -28,5 +29,8 @@ class UnlockCommentAchievement
     {
         $comment = $event->comment;
         $user = $event->user;
+
+        $userHelper = new UserHelper();
+        $userHelper->unlockUserCommentAchievement($user);
     }
 }
