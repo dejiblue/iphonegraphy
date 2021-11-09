@@ -70,7 +70,7 @@ class User extends Authenticatable
      */
     public function lessons()
     {
-        return $this->belongsToMany(Lesson::class);
+        return $this->belongsToMany(Lesson::class)->withPivot('user_id', 'lesson_id', 'watched');
     }
 
     /**
