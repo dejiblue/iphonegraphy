@@ -28,7 +28,7 @@ class AchievementsController extends Controller
         '25 Lessons Watched',
         '50 Lessons Watched'
     ];
-    
+
     /**
      * @param $userId
      * @return JsonResponse
