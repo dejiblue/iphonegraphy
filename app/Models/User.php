@@ -50,6 +50,22 @@ class User extends Authenticatable
     }
 
     /**
+     * The achievements that belong to the user.
+     */
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
+    }
+
+    /**
+     * The Badge that belong to the user.
+     */
+    public function badge()
+    {
+        return $this->hasOne(Badge::class);
+    }
+
+    /**
      * The lessons that a user has access to.
      */
     public function lessons()
